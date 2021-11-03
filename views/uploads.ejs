@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>My uploads</title>
+    <style>
+        body {
+            font-family: Helvetica;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 10;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        table {
+            height: 100px;
+            width: 90%;
+        }
+
+        th {
+            text-align: left;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        td {
+            text-align: justify;
+        }
+
+        table, th, td {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+        }
+
+        .center {
+            margin-left: auto; 
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/uploads">My uploads</a></li>
+        <li style="float:right"><a class="active" href="/logout">Sign Out</a></li>
+    </ul>
+    <br>
+    <table class="center">
+        <thead>
+            <tr>
+            <th>Filename</th>
+            <th>Filetype</th>
+            <th>Transcriptions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(data.length){
+            
+            for(var i = 0; i< data.length; i++) {%>  
+            <tr>
+                <td><%= data[i].filename%></td>
+                <td><%= data[i].filetype%></td>
+                <td><%= data[i].texttranscription%></td>
+            </tr>
+            <% }
+                    
+            }else{ %>
+                <div class="center">
+                    <h2>No Transcriptions done yet!!</h2>
+                </div>
+            <% } %>    
+            
+        </tbody>
+    </table>
+</body>
+
+</html>
